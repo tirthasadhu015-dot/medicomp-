@@ -30,24 +30,39 @@ if FRONTEND_DIR.exists():
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 
-@app.get("/", include_in_schema=False)
-async def index() -> Response:
-    if not (FRONTEND_DIR / "index.html").exists():
+def frontend_file_response(filename: str) -> Response:
+    target = FRONTEND_DIR / filename
+    if not target.exists():
         return JSONResponse(
             status_code=503,
-            content={"status": "error", "message": "Frontend assets are missing."},
+            content={"status": "error", "message": f"Frontend asset '{filename}' is missing."},
         )
-    return FileResponse(FRONTEND_DIR / "index.html")
+    return FileResponse(target)
+
+
+@app.get("/", include_in_schema=False)
+async def index() -> Response:
+    return frontend_file_response("index.html")
+
+
+@app.get("/about", include_in_schema=False)
+async def about_page() -> Response:
+    return frontend_file_response("about.html")
+
+
+@app.get("/how-it-works", include_in_schema=False)
+async def how_it_works_page() -> Response:
+    return frontend_file_response("how-it-works.html")
+
+
+@app.get("/portal", include_in_schema=False)
+async def portal_page() -> Response:
+    return frontend_file_response("portal.html")
 
 
 @app.get("/app.js", include_in_schema=False)
 async def frontend_script() -> Response:
-    if not (FRONTEND_DIR / "app.js").exists():
-        return JSONResponse(
-            status_code=503,
-            content={"status": "error", "message": "Frontend script is missing."},
-        )
-    return FileResponse(FRONTEND_DIR / "app.js")
+    return frontend_file_response("app.js")
 
 
 @app.post("/api/search", response_model=SearchResponse)

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediScan | Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: "#18352d",
+            teal: "#2f7c85",
+            mist: "#dcefee",
+            ivory: "#f7f2e8",
+            clay: "#d97b4d",
+            pine: "#28594f"
+          },
+          fontFamily: {
+            display: ["Palatino Linotype", "Book Antiqua", "serif"],
+            body: ["Segoe UI", "sans-serif"]
+          },
+          boxShadow: {
+            panel: "0 20px 45px rgba(24, 53, 45, 0.12)"
+          },
+          animation: {
+            floatin: "floatin 0.8s ease-out"
+          },
+          keyframes: {
+            floatin: {
+              "0%": { opacity: 0, transform: "translateY(14px)" },
+              "100%": { opacity: 1, transform: "translateY(0)" }
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-[linear-gradient(135deg,_#f7f2e8_0%,_#dcefee_45%,_#ffffff_100%)] font-body text-forest">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <header class="rounded-[2rem] border border-white/70 bg-white/75 px-6 py-5 shadow-panel backdrop-blur">
+      <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal">MediScan</p>
+          <h1 class="mt-2 font-display text-3xl">Working Portal</h1>
+        </div>
+        <nav class="flex flex-wrap gap-2 text-sm font-semibold">
+          <a href="/" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">Home</a>
+          <a href="/about" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">About</a>
+          <a href="/how-it-works" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">How It Works</a>
+          <a href="/portal" class="rounded-full bg-forest px-4 py-2 text-white">Portal</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+      <aside class="w-full rounded-[2rem] border border-white/70 bg-white/75 p-5 shadow-panel backdrop-blur lg:sticky lg:top-6 lg:h-fit lg:w-80">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal">Search Memory</p>
+          <h2 class="mt-2 font-display text-3xl leading-tight">Your recent medicine lookups stay right here.</h2>
+          <p class="mt-3 text-sm text-slate-600">This panel uses browser LocalStorage, so your recent searches remain available on the same device.</p>
+        </div>
+
+        <section>
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Recent Searches</h3>
+            <button id="clearRecentBtn" class="text-xs font-semibold text-clay hover:opacity-80">Clear</button>
+          </div>
+          <div id="recentSearches" class="mt-4 flex flex-col gap-2"></div>
+        </section>
+      </aside>
+
+      <main class="flex-1 space-y-6">
+        <section class="rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal">Live Search</p>
+              <h2 class="mt-2 font-display text-4xl">Compare medicine prices across major e-pharmacy platforms.</h2>
+            </div>
+            <form id="searchForm" class="w-full max-w-2xl">
+              <label for="medicineInput" class="mb-2 block text-sm font-semibold text-slate-600">Search medicine</label>
+              <div class="flex flex-col gap-3 sm:flex-row">
+                <input id="medicineInput" name="medicine_name" type="text" placeholder="Try Paracetamol 500mg" class="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-base outline-none transition focus:border-teal" required />
+                <button type="submit" class="rounded-2xl bg-forest px-6 py-4 text-sm font-semibold text-white transition hover:bg-pine">Scan Prices</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="loadingSkeleton" class="hidden animate-floatin rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+          <div class="animate-pulse space-y-4">
+            <div class="h-5 w-40 rounded-full bg-slate-200"></div>
+            <div class="grid gap-3">
+              <div class="h-20 rounded-3xl bg-slate-200"></div>
+              <div class="h-20 rounded-3xl bg-slate-200"></div>
+              <div class="h-20 rounded-3xl bg-slate-200"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid gap-6 xl:grid-cols-[1.6fr_0.9fr]">
+          <div class="overflow-hidden rounded-[2rem] border border-white/70 bg-white/85 shadow-panel">
+            <div class="border-b border-slate-100 px-6 py-5">
+              <h3 class="font-display text-2xl">Comparison Matrix</h3>
+              <p id="resultMeta" class="mt-1 text-sm text-slate-500">Search for a medicine to load live pricing.</p>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full">
+                <thead class="bg-slate-50 text-left text-xs uppercase tracking-[0.2em] text-slate-500">
+                  <tr>
+                    <th class="px-6 py-4">Platform</th>
+                    <th class="px-6 py-4">Medicine Variation</th>
+                    <th class="px-6 py-4">Quantity</th>
+                    <th class="px-6 py-4">Live Price</th>
+                    <th class="px-6 py-4">Buy</th>
+                  </tr>
+                </thead>
+                <tbody id="comparisonTableBody" class="divide-y divide-slate-100 bg-white"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="aiInsightsCard" class="rounded-[2rem] border border-white/70 bg-[linear-gradient(180deg,_#dcefee,_#ffffff)] p-6 shadow-panel">
+            <div class="flex items-center gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-forest text-sm font-bold text-white">AI</div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Gemini Insights</p>
+                <h3 class="font-display text-2xl">Salt analysis and generic substitutes</h3>
+              </div>
+            </div>
+            <div id="aiInsightsContent" class="mt-6 space-y-4 text-sm text-slate-700">
+              <p>Run a search to see normalized salt composition and cheaper equivalent brand suggestions.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

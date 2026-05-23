@@ -3,9 +3,9 @@ const RECENT_SEARCH_KEY = "mediscan_recent_searches";
 const MAX_RECENT = 8;
 
 const platformStyles = {
-  "Apollo Pharmacy": { badge: "AP", tone: "bg-sky text-sky-900" },
-  "Tata 1mg": { badge: "1M", tone: "bg-mint text-leaf" },
-  "PharmEasy": { badge: "PE", tone: "bg-sand text-amber-900" },
+  "Apollo Pharmacy": { badge: "AP", tone: "bg-[#dcefee] text-[#18352d]" },
+  "Tata 1mg": { badge: "1M", tone: "bg-[#f7f2e8] text-[#2f7c85]" },
+  "PharmEasy": { badge: "PE", tone: "bg-[#e8f4ef] text-[#28594f]" },
 };
 
 const form = document.getElementById("searchForm");
@@ -27,6 +27,7 @@ function escapeHTML(value) {
 }
 
 function setLoadingState(isLoading) {
+  if (!loadingSkeleton) return;
   loadingSkeleton.classList.toggle("hidden", !isLoading);
 }
 
@@ -49,6 +50,7 @@ function saveRecentSearch(term) {
 }
 
 function renderRecentSearches() {
+  if (!recentSearches) return;
   const items = getRecentSearches();
   recentSearches.innerHTML = "";
 
@@ -71,6 +73,7 @@ function renderRecentSearches() {
 }
 
 function renderTable(offers, lowestPrice) {
+  if (!tableBody) return;
   tableBody.innerHTML = "";
 
   if (!offers.length) {
@@ -107,7 +110,7 @@ function renderTable(offers, lowestPrice) {
       <td class="px-6 py-5">${priceMarkup}</td>
       <td class="px-6 py-5">
         <a
-          class="inline-flex ${canBuy ? "bg-ink text-white hover:bg-leaf" : "bg-slate-100 text-slate-400 cursor-not-allowed pointer-events-none"} rounded-2xl px-4 py-2 text-sm font-semibold transition"
+          class="inline-flex ${canBuy ? "bg-forest text-white hover:bg-pine" : "bg-slate-100 text-slate-400 cursor-not-allowed pointer-events-none"} rounded-2xl px-4 py-2 text-sm font-semibold transition"
           href="${canBuy ? offer.purchase_url : "#"}"
           target="_blank"
           rel="noreferrer"
@@ -121,6 +124,7 @@ function renderTable(offers, lowestPrice) {
 }
 
 function renderAIInsights(insights) {
+  if (!aiInsightsContent) return;
   const substitutes = Array.isArray(insights.substitutes) ? insights.substitutes : [];
   const substituteMarkup = substitutes.length
     ? substitutes.map((item) => `
@@ -158,7 +162,7 @@ function renderWarnings(warnings) {
 
 async function runSearch(term) {
   const medicineName = term.trim();
-  if (!medicineName) return;
+  if (!medicineName || !resultMeta) return;
 
   setLoadingState(true);
   resultMeta.textContent = `Fetching live prices for "${medicineName}"...`;
@@ -195,14 +199,18 @@ async function runSearch(term) {
   }
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  runSearch(input.value);
-});
+if (form && input) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    runSearch(input.value);
+  });
+}
 
-clearRecentBtn.addEventListener("click", () => {
-  localStorage.removeItem(RECENT_SEARCH_KEY);
-  renderRecentSearches();
-});
+if (clearRecentBtn) {
+  clearRecentBtn.addEventListener("click", () => {
+    localStorage.removeItem(RECENT_SEARCH_KEY);
+    renderRecentSearches();
+  });
+}
 
 renderRecentSearches();
