@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MediScan | Home</title>
+  <title>MEDICOMP+ | Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            forest: "#18352d",
-            teal: "#2f7c85",
-            mist: "#dcefee",
-            ivory: "#f7f2e8",
-            clay: "#d97b4d",
-            pine: "#28594f"
+            forest: "#214d34",
+            teal: "#4f8a5b",
+            mist: "#dff1df",
+            ivory: "#f5fbf3",
+            clay: "#79a86f",
+            pine: "#2f6a3c"
           },
           fontFamily: {
             display: ["Palatino Linotype", "Book Antiqua", "serif"],
@@ -29,15 +29,15 @@
     };
   </script>
 </head>
-<body class="min-h-screen bg-[linear-gradient(135deg,_#f7f2e8_0%,_#dcefee_48%,_#ffffff_100%)] font-body text-forest">
+<body class="min-h-screen bg-[linear-gradient(135deg,_#f5fbf3_0%,_#dff1df_48%,_#ffffff_100%)] font-body text-forest">
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <header class="rounded-[2rem] border border-white/70 bg-white/75 px-6 py-5 shadow-panel backdrop-blur">
+    <header class="px-2 py-3">
       <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal">MediScan</p>
+          <p class="inline-flex rounded-full bg-mist px-4 py-2 text-lg font-extrabold uppercase tracking-[0.28em] text-forest shadow-sm">MEDICOMP+</p>
           <h1 class="mt-2 font-display text-3xl">Smart medicine comparison for everyday healthcare decisions.</h1>
         </div>
-        <nav class="flex flex-wrap gap-2 text-sm font-semibold">
+        <nav class="flex flex-wrap gap-2 text-xs font-semibold">
           <a href="/" class="rounded-full bg-forest px-4 py-2 text-white">Home</a>
           <a href="/about" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">About</a>
           <a href="/how-it-works" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">How It Works</a>
@@ -48,29 +48,30 @@
 
     <main class="mt-6 space-y-6">
       <section class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-        <div class="rounded-[2.25rem] bg-forest px-7 py-8 text-white shadow-panel">
-          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-mist">Home Page</p>
-          <h2 class="mt-4 max-w-2xl font-display text-5xl leading-tight">One place to compare medicine prices, spot cheaper options, and act faster.</h2>
-          <p class="mt-5 max-w-xl text-base leading-7 text-white/80">MediScan is designed for people who want pharmacy price visibility without jumping between multiple tabs. Search once, compare live listings, and review AI-guided substitute insights.</p>
+        <div class="bg-transparent px-2 py-6 text-forest">
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal">Home Page</p>
+          <h2 class="mt-4 max-w-2xl font-display text-5xl leading-tight">Welcome to <span class="font-extrabold text-pine">MEDICOMP+</span>, your calmer way to compare medicine prices.</h2>
+          <p class="mt-3 text-lg font-semibold text-pine">Welcomeee!!!!</p>
+          <p class="mt-5 max-w-xl text-base leading-7 text-slate-700">MEDICOMP+ is designed for people who want pharmacy price visibility without jumping between multiple tabs. Search once, compare live listings, and review AI-guided substitute insights.</p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="/portal" class="rounded-full bg-clay px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90">Open Working Portal</a>
-            <a href="/about" class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Learn About MediScan</a>
+            <span class="text-sm font-semibold uppercase tracking-[0.2em] text-pine">Welcomeee!!!!</span>
+            <a href="/about" class="text-sm font-semibold text-forest underline decoration-teal/60 underline-offset-4 transition hover:text-teal">Learn About MEDICOMP+</a>
           </div>
         </div>
 
         <div class="grid gap-6">
-          <div class="rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+          <div class="p-2">
             <p class="text-xs font-semibold uppercase tracking-[0.25em] text-teal">What You Get</p>
             <div class="mt-4 space-y-4">
-              <div class="rounded-3xl bg-mist p-4">
+              <div class="p-1">
                 <h3 class="font-semibold">Live Price Comparison</h3>
                 <p class="mt-2 text-sm leading-6 text-slate-700">Apollo Pharmacy, Tata 1mg, and PharmEasy results arranged in one matrix.</p>
               </div>
-              <div class="rounded-3xl bg-ivory p-4">
+              <div class="p-1">
                 <h3 class="font-semibold">AI Normalization</h3>
                 <p class="mt-2 text-sm leading-6 text-slate-700">Gemini helps map brand names to likely salt composition and strength.</p>
               </div>
-              <div class="rounded-3xl bg-mist p-4">
+              <div class="p-1">
                 <h3 class="font-semibold">Quick Recall</h3>
                 <p class="mt-2 text-sm leading-6 text-slate-700">Recent medicine searches stay available locally in your browser.</p>
               </div>
@@ -80,17 +81,17 @@
       </section>
 
       <section class="grid gap-6 md:grid-cols-3">
-        <article class="rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+        <article class="p-2">
           <p class="text-sm font-semibold text-teal">1. Search</p>
           <h3 class="mt-2 font-display text-2xl">Enter a medicine name</h3>
           <p class="mt-3 text-sm leading-6 text-slate-700">Start with a brand or salt name like Paracetamol 500mg or Dolo 650.</p>
         </article>
-        <article class="rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+        <article class="p-2">
           <p class="text-sm font-semibold text-teal">2. Compare</p>
           <h3 class="mt-2 font-display text-2xl">Review the best deal</h3>
           <p class="mt-3 text-sm leading-6 text-slate-700">The lowest price is highlighted so you can quickly see the strongest option.</p>
         </article>
-        <article class="rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+        <article class="p-2">
           <p class="text-sm font-semibold text-teal">3. Decide</p>
           <h3 class="mt-2 font-display text-2xl">Check substitute insights</h3>
           <p class="mt-3 text-sm leading-6 text-slate-700">Use the AI card to inspect equivalent generic suggestions before purchasing.</p>

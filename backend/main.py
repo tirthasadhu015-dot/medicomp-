@@ -16,7 +16,7 @@ from backend.services.scrapers import scrape_all_pharmacies
 BASE_DIR = Path(__file__).resolve().parent.parent
 FRONTEND_DIR = BASE_DIR / "frontend"
 
-app = FastAPI(title="MediScan API", version="1.0.0")
+app = FastAPI(title="MEDICOMP+ API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,

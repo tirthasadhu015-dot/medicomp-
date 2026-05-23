@@ -1,5 +1,5 @@
 const API_BASE = window.location.origin;
-const RECENT_SEARCH_KEY = "mediscan_recent_searches";
+const RECENT_SEARCH_KEY = "medicomp_plus_recent_searches";
 const MAX_RECENT = 8;
 
 const platformStyles = {

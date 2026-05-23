@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MediScan | Portal</title>
+  <title>MEDICOMP+ | Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -40,13 +40,13 @@
 </head>
 <body class="min-h-screen bg-[linear-gradient(135deg,_#f7f2e8_0%,_#dcefee_45%,_#ffffff_100%)] font-body text-forest">
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <header class="rounded-[2rem] border border-white/70 bg-white/75 px-6 py-5 shadow-panel backdrop-blur">
+    <header class="px-2 py-3">
       <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal">MediScan</p>
+          <p class="inline-flex rounded-full bg-mist px-4 py-2 text-lg font-extrabold uppercase tracking-[0.28em] text-forest shadow-sm">MEDICOMP+</p>
           <h1 class="mt-2 font-display text-3xl">Working Portal</h1>
         </div>
-        <nav class="flex flex-wrap gap-2 text-sm font-semibold">
+        <nav class="flex flex-wrap gap-2 text-xs font-semibold">
           <a href="/" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">Home</a>
           <a href="/about" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">About</a>
           <a href="/how-it-works" class="rounded-full border border-forest/15 bg-white px-4 py-2 text-forest transition hover:border-teal hover:text-teal">How It Works</a>
@@ -56,7 +56,7 @@
     </header>
 
     <div class="mt-6 flex flex-col gap-6 lg:flex-row">
-      <aside class="w-full rounded-[2rem] border border-white/70 bg-white/75 p-5 shadow-panel backdrop-blur lg:sticky lg:top-6 lg:h-fit lg:w-80">
+      <aside class="w-full p-3 lg:sticky lg:top-6 lg:h-fit lg:w-80">
         <div class="mb-6">
           <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal">Search Memory</p>
           <h2 class="mt-2 font-display text-3xl leading-tight">Your recent medicine lookups stay right here.</h2>
@@ -73,7 +73,7 @@
       </aside>
 
       <main class="flex-1 space-y-6">
-        <section class="rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+        <section class="p-2">
           <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div class="max-w-2xl">
               <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal">Live Search</p>
@@ -89,7 +89,7 @@
           </div>
         </section>
 
-        <section id="loadingSkeleton" class="hidden animate-floatin rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-panel">
+        <section id="loadingSkeleton" class="hidden animate-floatin p-2">
           <div class="animate-pulse space-y-4">
             <div class="h-5 w-40 rounded-full bg-slate-200"></div>
             <div class="grid gap-3">
@@ -101,8 +101,8 @@
         </section>
 
         <section class="grid gap-6 xl:grid-cols-[1.6fr_0.9fr]">
-          <div class="overflow-hidden rounded-[2rem] border border-white/70 bg-white/85 shadow-panel">
-            <div class="border-b border-slate-100 px-6 py-5">
+          <div class="overflow-hidden">
+            <div class="px-6 py-5">
               <h3 class="font-display text-2xl">Comparison Matrix</h3>
               <p id="resultMeta" class="mt-1 text-sm text-slate-500">Search for a medicine to load live pricing.</p>
             </div>
@@ -122,9 +122,9 @@
             </div>
           </div>
 
-          <div id="aiInsightsCard" class="rounded-[2rem] border border-white/70 bg-[linear-gradient(180deg,_#dcefee,_#ffffff)] p-6 shadow-panel">
+          <div id="aiInsightsCard" class="p-2">
             <div class="flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-forest text-sm font-bold text-white">AI</div>
+              <div class="flex h-11 w-11 items-center justify-center bg-forest text-sm font-bold text-white">AI</div>
               <div>
                 <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Gemini Insights</p>
                 <h3 class="font-display text-2xl">Salt analysis and generic substitutes</h3>

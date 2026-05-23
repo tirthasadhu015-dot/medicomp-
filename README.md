@@ -1,6 +1,6 @@
-# MediScan
+# MEDICOMP+
 
-MediScan is a FastAPI + Vanilla JavaScript e-pharmacy comparison app that searches Apollo Pharmacy, Tata 1mg, and PharmEasy, then uses Gemini to normalize results and suggest cheaper substitutes.
+MEDICOMP+ is a FastAPI + Vanilla JavaScript e-pharmacy comparison app that searches Apollo Pharmacy, Tata 1mg, and PharmEasy, then uses Gemini to normalize results and suggest cheaper substitutes.
 
 ## Run locally
 
