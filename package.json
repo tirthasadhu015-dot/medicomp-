@@ -1,0 +1,15 @@
+{
+  "name": "medicine-comparee",
+  "version": "1.0.0",
+  "description": "MediScan is a FastAPI + Vanilla JavaScript e-pharmacy comparison app that searches Apollo Pharmacy, Tata 1mg, and PharmEasy, then uses Gemini to normalize results and suggest cheaper substitutes.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
